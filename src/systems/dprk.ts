@@ -98,7 +98,6 @@ const HangulSoundRules = new Map<string, string>([
   ['ᆯᄀ', 'lg'],
   ['ᄅᄂ', 'll'],
   ['ᆯᄃ', 'ld'],
-  ['ᄅᄅ', 'll'],
   ['ᆯᄇ', 'lb'],
   ['ᆯᄌ', 'lj'],
   ['ᆮᄋ', 'd'],
