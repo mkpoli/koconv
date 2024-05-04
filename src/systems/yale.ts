@@ -82,7 +82,7 @@ const codaMapping: Record<string, string> = {
 };
 
 const HangulSoundRules = new Map<string, string>([
-  ['ᆮᄋ', 'd'],
+  ['ᆮᄋ', 't'],
   ['ᆮᄂ', 'nn'],
   ['ᆮᄅ', 'nn'],
   ['ᆮᄆ', 'nm'],
@@ -130,7 +130,7 @@ function romanizeHangul(hangulParts: [string, string, string][]): string {
       }
 
       // pwu -> pu, phwu -> phu, etc.
-      if (romanOnset === 'p' && romanNucleus.startsWith('w')) {
+      if (['p', 'ph', 'pp', 'm'].includes(romanOnset) && romanNucleus.startsWith('w')) {
         romanNucleus = romanNucleus.slice(1);
       }
 

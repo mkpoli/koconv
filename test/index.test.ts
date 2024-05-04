@@ -163,7 +163,7 @@ const TEST_CASES = [
     hangul: '뒤문',
     mc2000: 'dwinmun',
     dprk: 'Twinmun',
-    yale: 'twismwun',
+    yale: 'twismun',
   },
   {
     hangul: '앞언덕',
@@ -270,6 +270,55 @@ const TEST_CASES = [
     mc2000: 'wonhasineun seon saekkkalgwa gulgie chekeuhasimyeon doemnida',
     dprk: 'Wŏnhasinŭn sŏn saekkkalgwa kulgie chekhŭhasimyŏn toimnida',
     yale: 'Wēnhasinun sen sayk.kkalkwa kwulk.kiey cheykhuhasimyen toypnita',
+  },
+  // Examples from https://menu.gerosyab.net/ko/romanizer
+  {
+    hangul: '해돋이',
+    mc2000: 'haedoji',
+    dprk: 'haedoji',
+    yale: 'haytoti',
+  },
+  {
+    hangul: '선릉역',
+    mc2000: 'seolleungyeok',
+    dprk: 'sŏllŭngyŏk',
+    yale: 'senlungyek',
+  },
+  {
+    hangul: '역량',
+    mc2000: 'yeongnyang',
+    dprk: 'yŏngnyang',
+    yale: 'yeklyang',
+  },
+  {
+    hangul: '굳이',
+    mc2000: 'guji',
+    dprk: 'kuji',
+    yale: 'kwuti',
+  },
+  {
+    hangul: '물티슈',
+    mc2000: 'multisyu',
+    dprk: 'multhisyu',
+    yale: 'multhisyu',
+  },
+  {
+    hangul: '티슈',
+    mc2000: 'tisyu',
+    dprk: 'thisyu',
+    yale: 'thisyu',
+  },
+  {
+    hangul: '박 지성',
+    mc2000: 'bak jiseong',
+    dprk: 'pak jisŏng',
+    yale: 'pak ciseng',
+  },
+  {
+    hangul: '김치',
+    mc2000: 'gimchi',
+    dprk: 'kimchi',
+    yale: 'kimchi',
   },
 ];
 
