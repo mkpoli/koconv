@@ -1,5 +1,11 @@
 # koconv
 
+> [!WARNING]
+> 
+> The conversion will never be perfect. Please double-check the result.
+> 
+> Be careful with spacing, dotting and special spelling rules.
+
 A simple tool to convert Korean text between Hangul and Romanization.
 
 A web application version is available at [korean.mkpo.li](https://korean.mkpo.li).
