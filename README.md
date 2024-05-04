@@ -20,6 +20,7 @@ For now only from Hangul to the following systems are supported.
 
 ### Planned
 - McCune–Reischauer (1939)
+- Pronounciation Respelling (한글 발음 표기법)
 - Kontsevich Cyrillization (Система Концевича)
 - Braille
 
@@ -43,6 +44,8 @@ The following systems are not planned to be supported, but is welcome to be cont
 - Seongmin Mun (2019) [Yale-romanization-of-Korean](https://github.com/seongmin-mun/Yale-romanization-of-Korean)
 - graphemecluster (2024) [Hangul to NK Romaja Converter](https://graphemecluster.github.io/hangul_to_nk_romaja_converter)
 - graphemecluster (2024) [Hangul to IPA Converter](https://graphemecluster.github.io/hangul_to_ipa_converter)
+- SnuMenu [Hangul(Korean) Romanization Tool (한글-로마자 변환기)](https://menu.gerosyab.net/ko/romanizer)
+- Wiktionary contributors (2024) [모듈:ko-pron](https://ko.wiktionary.org/wiki/%EB%AA%A8%EB%93%88:ko-pron)
 
 ### Romanization Systems
 
