@@ -150,7 +150,7 @@ const HangulSoundRules = new Map<string, string>([
   ['ᆫᄅ', 'nr'],
   ['ᆫᄇ', 'nb'],
   ['ᆫᄌ', 'nj'],
-  ['ᆫᄂ', 'll'],
+  // ['ᆫᄂ', 'll'],
   ['ᆯᄀ', 'lg'],
   ['ᄅᄂ', 'll'],
   ['ᆯᄃ', 'ld'],
