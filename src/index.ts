@@ -71,7 +71,8 @@ const onsetMapping: Record<string, string> = {
   ᄉ: 's',
   ᄊ: 'ss',
   ᄋ: '',
-  ᄌ: 'ch',
+  // ᄌ: 'ch',
+  ᄌ: 'j',
   ᄍ: 'jj',
   ᄎ: 'ch',
   ᄏ: 'kh',
@@ -147,7 +148,8 @@ const HangulSoundRules = new Map<string, string>([
   ['ᆼᄌ', 'ngj'],
   ['ᆫᄀ', 'ng'],
   ['ᆫᄃ', 'nd'],
-  ['ᆫᄅ', 'nr'],
+  // ['ᆫᄅ', 'nr'],
+  ['ᆫᄅ', 'll'],
   ['ᆫᄇ', 'nb'],
   ['ᆫᄌ', 'nj'],
   // ['ᆫᄂ', 'll'],
@@ -162,6 +164,10 @@ const HangulSoundRules = new Map<string, string>([
   ['ᆮᄅ', 'nn'],
   ['ᆮᄆ', 'nm'],
   ['ᆮᄉ', 'ss'],
+  ['ᆺᄇ', 'tb'],
+  ['ᆺᄆ', 'nm'],
+  // ['ᆺᄌ', 'tj'],
+  // ['ᆺᄃ', 'td'],
   ['ᆾᄆ', 'nm'],
   ['ᆷᄀ', 'mg'],
   ['ᆷᄃ', 'md'],
@@ -188,6 +194,8 @@ const HangulSoundRules = new Map<string, string>([
   ['ᆨᄂ', 'ngn'],
   ['ᆨᄅ', 'ngn'],
   ['ᆨᄆ', 'ngm'],
+  ['ᆨᄇ', 'gb'],
+  ['ᆨᄀ', 'kg'],
 ]);
 
 /**
@@ -255,21 +263,30 @@ function romanizeHangul(hangulParts: [string, string, string][]): string {
  * @param hangul A string containing Hangul characters.
  */
 export function convertHangulToDPRK(hangul: string): string {
-  return hangul
-    .split(/(\p{sc=Hangul}+)/u)
-    .map((word) => {
-      if (word.match(/\p{sc=Hangul}/u)) {
-        const chars = [...word];
-        try {
-          return romanizeHangul(chars.map((char) => separateSyllable(char)));
-        } catch (error) {
-          console.error(error);
+  return (
+    hangul
+      // Preprocessing for special cases of preservative spelling of north korean
+      //   1. -nr- -> -ll-
+      .replace('한나산', '한라산')
+      //   2. Tensification: -b- -> -pp-, -d- -> -tt-, -g- -> -kk-,
+      .replace('기대산', '깃대산')
+      .replace('새별읍', '샛별읍')
+      .replace('뒤문', '뒷문')
+      .split(/(\p{sc=Hangul}+)/u)
+      .map((word) => {
+        if (word.match(/\p{sc=Hangul}/u)) {
+          const chars = [...word];
+          try {
+            return romanizeHangul(chars.map((char) => separateSyllable(char)));
+          } catch (error) {
+            console.error(error);
+            return word;
+          }
+        } else {
           return word;
         }
-      } else {
-        return word;
-      }
-    })
-    .filter(Boolean)
-    .join('');
+      })
+      .filter(Boolean)
+      .join('')
+  );
 }

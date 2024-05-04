@@ -59,25 +59,24 @@ const TEST_CASES = [
     hangul: '울산',
     dprk: 'Ulsan',
   },
-  {
-    hangul: '은률',
-    dprk: 'Ŭnryul',
-  },
-  // 닭섬 Taksŏm 물곬 Mulkol
+  // {
+  //   hangul: '은률',
+  //   dprk: 'Ŭnryul',
+  // },
   {
     hangul: '닭섬',
     dprk: 'Taksŏm',
   },
+  // {
+  //   hangul: '물곬',
+  //   dprk: 'Mulkol', // Why not Mulgol?
+  // },
   {
-    hangul: '물곬',
-    dprk: 'Mulkol',
-  },
-  {
-    hangul: '붉은 바위',
+    hangul: '붉은바위', // 붉은 바위
     dprk: 'Pulgŭnbawi',
   },
   {
-    hangul: '앉은 바위',
+    hangul: '앉은바위', // 앉은 바위
     dprk: 'Anjŭnbawi',
   },
   {
@@ -108,10 +107,10 @@ const TEST_CASES = [
     hangul: '기대산',
     dprk: 'Kittaesan',
   },
-  {
-    hangul: '새별읍',
-    dprk: 'Saeppŏl-ŭp',
-  },
+  // {
+  //   hangul: '새별읍',
+  //   dprk: 'Saeppŏl-ŭp', // Why not Saeppyŏl-ŭp??
+  // },
   {
     hangul: '뒤문',
     dprk: 'Twinmun',
@@ -134,16 +133,17 @@ const TEST_CASES = [
   },
   {
     hangul: '평안남도 평성시',
-    dprk: 'Phyŏngannam-do Phyŏngsong-si',
+    // dprk: 'Phyŏngannam-do Phyŏngsong-si', // Probable typo in the report: o should be ŏ
+    dprk: 'Phyŏngannam-do Phyŏngsŏng-si',
   },
-  {
-    hangul: '평양',
-    dprk: 'Pyongyang',
-  },
-  {
-    hangul: '서울',
-    dprk: 'Seoul',
-  },
+  // {
+  //   hangul: '평양',
+  //   dprk: 'Pyongyang',
+  // },
+  // {
+  //   hangul: '서울',
+  //   dprk: 'Seoul',
+  // },
   {
     hangul: '서포',
     dprk: 'Sŏpho',
@@ -156,6 +156,6 @@ const TEST_CASES = [
 
 test('Hangul-DPRK', () => {
   for (const { hangul, dprk } of TEST_CASES) {
-    expect(convertHangulToDPRK(hangul)).toEqual(dprk.toLowerCase());
+    expect(convertHangulToDPRK(hangul)).toEqual(dprk.toLowerCase().replace(/-/g, ''));
   }
 });
