@@ -231,10 +231,10 @@ function romanizeHangul(hangulParts: [string, string, string][]): string {
       if (index < hangulParts.length - 1) {
         const nextOnset = hangulParts[index + 1][0];
         const ruleKey = coda + nextOnset;
-        console.log(`Checking rule: ${ruleKey}`);
+        // console.log(`Checking rule: ${ruleKey}`);
         const soundRuleResult = HangulSoundRules.get(ruleKey as any);
         if (soundRuleResult) {
-          console.log(`Rule matched: ${ruleKey} => ${soundRuleResult}`);
+          // console.log(`Rule matched: ${ruleKey} => ${soundRuleResult}`);
           romanCoda = soundRuleResult;
         }
       }
