@@ -7,17 +7,36 @@
   "author": "mkpoli <mkpoli@mkpo.li>",
   "license": "MIT",
   "homepage": "https://korean.mkpo.li/",
-  "files": [
-    "dist",
-    "index.d.ts"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkpoli/koconv.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mkpoli/koconv/issues"
+  },
+  "keywords": [
+    "korean",
+    "romanization",
+    "dprk"
   ],
-  "main": "./dist/counter.umd.cjs",
-  "module": "./dist/counter.js",
-  "types": "./index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "source": "./src/index.ts",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "commonjs": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "browser": "./dist/index.umd.js",
   "exports": {
-    "types": "./index.d.ts",
-    "import": "./dist/counter.js",
-    "require": "./dist/counter.umd.cjs"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "umd": "./dist/index.umd.js",
+      "browser": "./dist/index.umd.js",
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "scripts": {
     "build": "tsc && vite build",
