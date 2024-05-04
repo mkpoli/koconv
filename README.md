@@ -6,13 +6,14 @@
 > 
 > Be careful with spacing, dotting and special spelling rules.
 
-A simple tool to convert Korean text between Hangul and Romanization.
+A simple library to convert Korean text between Hangul and its transcription/transliteration into various other scripts.
 
 A web application version is available at [korean.mkpo.li](https://korean.mkpo.li).
 
-## Romanization Systems
+## Transcription/Transliteration Systems
 
 ### Currently Supported
+For now only from Hangul to the following systems are supported.
 - McCune-Reischauer based transcriptions
   - The Romanization of Korean (DPRK, 1992 - 2002 - 2012)
 - Yale Romanization of Korean (1942)
@@ -20,6 +21,20 @@ A web application version is available at [korean.mkpo.li](https://korean.mkpo.l
 ### Planned
 - McCune–Reischauer (1939)
 - Revised Romanization of Korean (Ministry of Culture, 2000)
+- Kontsevich Cyrillization (Система Концевича)
+- Braille
+
+The reverse conversion is planned to be implemented as well.
+
+### Not Planned
+The following systems are not planned to be supported, but is welcome to be contributed.
+
+- ALA-LC
+- Bok Moon Kim romanization
+- ISO/TR 11941
+- Kholodovich Cyrillization (Система Холодовича)
+- SKATS
+- Linear Hangul
 
 ## References
 
