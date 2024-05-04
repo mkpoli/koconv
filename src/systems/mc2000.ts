@@ -188,7 +188,8 @@ function romanizeHangul(hangulParts: [string, string, string][]): string {
 
       return romanOnset + romanNucleus + romanCoda;
     })
-    .join('');
+    .join('')
+    .replace('di', 'ji');
 }
 
 /**
