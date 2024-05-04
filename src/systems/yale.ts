@@ -162,12 +162,11 @@ function romanizeHangul(hangulParts: [string, string, string][]): string {
 }
 
 /**
- * Converts a Hangul string into DPRK Romanization.
+ * Converts a Hangul string into Yale romanization.
  *
- * The transcription is based on the official guidelines
- * submitted by the Democratic People's Republic of Korea
- * to the United Nations in 1992, 2002 and 2012, modified
- * version and replacement of the McCune-Reischauer system.
+ * The transcription is based on the Yale University system
+ * originally by Samuel Elmo Martin and his colleagues,
+ * which is widely used in Korean linguistics.
  *
  * @param hangul A string containing Hangul characters.
  */
