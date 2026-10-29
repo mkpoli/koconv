@@ -62,7 +62,8 @@ Romanization** The Rules of Latin Alphabetic Transcription of Korean Language](h
 - Wikipedia contributors. (2024, May 4). [Revised Romanization of Korean](https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean). In Wikipedia, The Free Encyclopedia. Retrieved 2024-05-04.
 
 #### Yale
-- Wikipedia contributors. (2024, May 4). [Yale Romanization of Korean](https://en.wikipedia.org/wiki/Yale_Romanization_of_Korean). In Wikipedia, The Free Encyclopedia. Retrieved 2024-05-04.
+- Samuel E. Martin (1992). *A Reference Grammar of Korean*. Rutland, Vermont & Tokyo: Charles E. Tuttle. pp. 8–9. Cited through the Wikipedia article below; not consulted directly.
+- Wikipedia contributors. [Yale romanization of Korean](https://en.wikipedia.org/w/index.php?title=Yale_romanization_of_Korean&oldid=1358691122). In Wikipedia, The Free Encyclopedia. Revision 1358691122 (2026-06-10). Retrieved 2026-10-30. Letter values, the labial abbreviation and the period.
 
 ## Development
 

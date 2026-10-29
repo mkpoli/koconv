@@ -13,7 +13,6 @@ const onsetMapping: Record<string, string> = {
   ᄉ: 's',
   ᄊ: 'ss',
   ᄋ: '',
-  // ᄌ: 'ch',
   ᄌ: 'c',
   ᄍ: 'cc',
   ᄎ: 'ch',
@@ -39,7 +38,7 @@ const nucleusMapping: Record<string, string> = {
   ᅭ: 'yo',
   ᅮ: 'wu',
   ᅯ: 'we',
-  ᅰ: 'we',
+  ᅰ: 'wey',
   ᅱ: 'wi',
   ᅲ: 'yu',
   ᅳ: 'u',
@@ -61,125 +60,69 @@ const codaMapping: Record<string, string> = {
   ᆱ: 'lm',
   ᆲ: 'lp',
   ᆳ: 'ls',
-  ᆴ: 'lt',
-  ᆵ: 'lp',
+  ᆴ: 'lth',
+  ᆵ: 'lph',
   ᆶ: 'lh',
   ᆷ: 'm',
   ᆸ: 'p',
   ᆹ: 'ps',
-  // ᆺ: 's',
   ᆺ: 's',
-  // ᆻ: 'ss',
   ᆻ: 'ss',
   ᆼ: 'ng',
-  ᆽ: 't',
+  ᆽ: 'c',
   ᆾ: 'ch',
   ᆿ: 'kh',
   ᇀ: 'th',
   ᇁ: 'ph',
-  // ᇂ: 'h'
   ᇂ: 'h',
 };
 
-const HangulSoundRules = new Map<string, string>([
-  ['ᆮᄋ', 't'],
-  ['ᆮᄂ', 'nn'],
-  ['ᆮᄅ', 'nn'],
-  ['ᆮᄆ', 'nm'],
-  ['ᆮᄉ', 'ss'],
-  ['ᆸᄋ', 'b'],
-  ['ᆹᄋ', 'ps'],
-  ['ᆺᄋ', 'ss'],
-  ['ᆻᄋ', 'ss'],
-  ['ᆬᄋ', 'nc'],
-  ['ᆭᄋ', 'nh'],
-  ['ᆰᄋ', 'lk'],
-  ['ᆱᄋ', 'lm'],
-  ['ᆲᄋ', 'lp'],
-  ['ᆳᄋ', 'ls'],
-  ['ᆴᄋ', 'th'],
-  ['ᆵᄋ', 'lph'],
-  ['ᆶᄋ', 'r'],
-]);
+const LABIALS = new Set(['p', 'ph', 'pp', 'm']);
+const ONSETS = new Set(Object.values(onsetMapping));
+const CODAS = new Set(Object.values(codaMapping));
 
 /**
- * Converts decomposed Hangul syllable parts to Romanized string, adjusting for voicing and specific sound rules.
- * @param hangulParts An array of tuples where each tuple represents the onset, nucleus, and coda of a Hangul syllable.
- * @returns A string with the Romanized version of the Hangul input.
+ * Whether `coda + onset` can also be read with the boundary elsewhere,
+ * e.g. `k` + `kw` (백과) against `kk` + `w`.
  */
-/**
- * Converts decomposed Hangul syllable parts to Romanized string, adjusting for voicing and specific sound rules.
- * @param hangulParts An array of tuples where each tuple represents the onset, nucleus, and coda of a Hangul syllable.
- * @returns A string with the Romanized version of the Hangul input.
- */
-function romanizeHangul(hangulParts: Syllable[]): string {
-  return hangulParts
-    .map(([onset, nucleus, coda], index) => {
-      let romanOnset = onsetMapping[onset];
-      let romanNucleus = nucleusMapping[nucleus];
-      let romanCoda = codaMapping[coda] ?? '';
+function isAmbiguous(coda: string, onset: string): boolean {
+  const cluster = coda + onset;
+  for (let i = 0; i <= cluster.length; i++) {
+    if (i === coda.length) continue;
+    const left = cluster.slice(0, i);
+    const right = cluster.slice(i);
+    if (right && CODAS.has(left) && ONSETS.has(right)) return true;
+  }
+  return false;
+}
 
-      // Adjust for voicing of the onset when it follows a voiced sound
-      if (index > 0 && romanNucleus) {
-        // const previousCoda = hangulParts[index - 1][2];
-        // if (codaMapping[previousCoda] === '') {/*
-        //   if (onset === 'ᄀ') romanOnset = 'g';
-        //   else if (onset === 'ᄃ') romanOnset = 'd';
-        //   else if (onset === 'ᄇ') romanOnset = 'b';
-        // } */
-      }
-
-      // pwu -> pu, phwu -> phu, etc.
-      if (['p', 'ph', 'pp', 'm'].includes(romanOnset) && romanNucleus.startsWith('w')) {
-        romanNucleus = romanNucleus.slice(1);
-      }
-
-      if (index > 0) {
-        // Remove the initial if sound rule matched (because it already includes the onset)
-        const previousCoda = hangulParts[index - 1][2];
-        const ruleKey = previousCoda + onset;
-        const soundRuleResult = HangulSoundRules.get(ruleKey);
-        if (soundRuleResult) {
-          romanOnset = '';
-        }
-      }
-
-      // Apply specific sound rule adjustments between coda of the current syllable and onset of the next syllable
-      if (index < hangulParts.length - 1) {
-        const nextOnset = hangulParts[index + 1][0];
-        const ruleKey = coda + nextOnset;
-        // console.log(`Checking rule: ${ruleKey}`);
-        const soundRuleResult = HangulSoundRules.get(ruleKey);
-        if (soundRuleResult) {
-          // console.log(`Rule matched: ${ruleKey} => ${soundRuleResult}`);
-          romanCoda = soundRuleResult;
-        }
-      }
-
-      return romanOnset + romanNucleus + romanCoda;
-    })
-    .join('');
+function romanizeWord(syllables: Syllable[]): string {
+  let result = '';
+  let previousCoda = '';
+  for (const [onset, nucleus, coda] of syllables) {
+    const romanOnset = onsetMapping[onset]!;
+    let romanNucleus = nucleusMapping[nucleus]!;
+    // After a labial ㅜ is abbreviated to u, the spelling of ㅡ everywhere.
+    if (romanNucleus === 'wu' && LABIALS.has(romanOnset)) romanNucleus = 'u';
+    if (previousCoda && (!romanOnset || isAmbiguous(previousCoda, romanOnset))) result += '.';
+    previousCoda = codaMapping[coda]!;
+    result += romanOnset + romanNucleus + previousCoda;
+  }
+  return result;
 }
 
 /**
  * Converts a Hangul string into Yale romanization.
  *
- * The transcription is based on the Yale University system
- * originally by Samuel Elmo Martin and his colleagues,
- * which is widely used in Korean linguistics.
+ * The system is the one Samuel E. Martin and his colleagues at Yale
+ * University used for modern Korean. It transliterates letter by letter,
+ * so the result follows the spelling, not the pronunciation. A period
+ * marks the syllable boundary after a final consonant when the next
+ * syllable starts with a vowel (`kath.i` 같이) or when the consonants
+ * could be divided another way (`payk.kwa` 백과, against 배꽈 `paykkwa`).
  *
  * @param hangul A string containing Hangul characters.
  */
 export function convertHangulToYale(hangul: string): string {
-  return convertWords(
-    hangul
-      // Preprocessing for special cases of preservative spelling of north korean
-      //   1. -nr- -> -ll-
-      // .replace('한나산', '한라산')
-      //   2. Tensification: -b- -> -pp-, -d- -> -tt-, -g- -> -kk-,
-      .replace('기대산', '깃대산')
-      .replace('새별읍', '샛별읍')
-      .replace('뒤문', '뒷문'),
-    romanizeHangul,
-  );
+  return convertWords(hangul, romanizeWord);
 }
