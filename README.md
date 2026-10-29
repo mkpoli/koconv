@@ -6,22 +6,48 @@
 > 
 > Be careful with spacing, dotting and special spelling rules.
 
-A simple library to convert Korean text between Hangul and its transcription/transliteration into various other scripts.
+A library that converts Hangul into romanizations and other scripts.
 
 A web application version is available at [korean.mkpo.li](https://korean.mkpo.li).
+
+## Usage
+
+```sh
+npm install koconv
+```
+
+```ts
+import {
+  convertHangulToDPRK,
+  convertHangulToKontsevich,
+  convertHangulToMC2000,
+  convertHangulToMR,
+  convertHangulToYale,
+} from 'koconv';
+
+convertHangulToMC2000('한국어 문법'); // 'hangugeo munbeop'
+convertHangulToMR('한국어 문법'); // "han'gugŏ munbŏp"
+convertHangulToDPRK('한국어 문법'); // 'hangugŏ munbŏp'
+convertHangulToYale('한국어 문법'); // 'hankwuk.e munpep'
+convertHangulToKontsevich('한국어 문법'); // 'хангуго мунбоп'
+```
+
+Each function converts every run of Hangul syllables and leaves other text, including bare jamo, as it is. Capitals, hyphens and spacing are not added. The package is ESM only; `require('koconv')` works on Node.js 20.19 and later.
+
+Sound changes that depend on meaning, such as ㄴ insertion (학여울 [항녀울]) or tensing inside compounds (물방울 [물빵울]), are not applied, and RR follows its rule for nouns when ㅎ follows ㄱ, ㄷ, ㅂ (묵호 Mukho).
 
 ## Transcription/Transliteration Systems
 
 ### Currently Supported
-For now only from Hangul to the following systems are supported.
-- Yale Romanization of Korean (1942)
-- The Romanization of Korean (DPRK, 1992 - 2002 - 2012)
-- Revised Romanization of Korean (Ministry of Culture, 2000)
-- McCune–Reischauer (1939)
-- Kontsevich Cyrillization (Система Концевича)
+From Hangul to:
+- Revised Romanization of Korean (Ministry of Culture, 2000): `convertHangulToMC2000`
+- McCune–Reischauer (1939): `convertHangulToMR`
+- The Romanization of Korean (DPRK, 1992 - 2002 - 2012): `convertHangulToDPRK`
+- Yale Romanization of Korean (1942): `convertHangulToYale`
+- Kontsevich Cyrillization (Система Концевича): `convertHangulToKontsevich`
 
 ### Planned
-- Pronounciation Respelling (한글 발음 표기법)
+- Pronunciation Respelling (한글 발음 표기법)
 - Braille
 
 The reverse conversion is planned to be implemented as well.
