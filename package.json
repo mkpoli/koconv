@@ -39,8 +39,8 @@
     }
   },
   "scripts": {
-    "build": "tsc && vite build",
-    "build:watch": "tsc -w",
+    "build": "tsrs && vite build",
+    "build:watch": "tsrs -w",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
@@ -49,6 +49,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "terser": "^5.31.0",
     "tslib": "^2.6.2",
+    "tsrs": "0.20.1-ts7.1.0-beta",
     "typescript": "^5.4.5",
     "vite": "^5.2.10"
   }
