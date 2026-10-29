@@ -63,3 +63,17 @@ Romanization** The Rules of Latin Alphabetic Transcription of Korean Language](h
 
 #### Yale
 - Wikipedia contributors. (2024, May 4). [Yale Romanization of Korean](https://en.wikipedia.org/wiki/Yale_Romanization_of_Korean). In Wikipedia, The Free Encyclopedia. Retrieved 2024-05-04.
+
+## Development
+
+```sh
+bun install
+bun run check   # type-check
+bun test
+bun run build   # writes dist/
+```
+
+### Releasing
+
+1. Bump `version` in `package.json` on `main`.
+2. Push a tag `v<version>`. The `Release` workflow checks that the tag matches `package.json`, publishes to npm with provenance through npm trusted publishing, and creates a GitHub release.
