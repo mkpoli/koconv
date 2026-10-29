@@ -59,7 +59,9 @@ The following systems are not planned to be supported, but is welcome to be cont
 Romanization** The Rules of Latin Alphabetic Transcription of Korean Language](https://unstats.un.org/unsd/geoinfo/ungegn/docs/10th-uncsgn-docs/crp/E_Conf.101_CRP15_Rules%20of%20Latin%20Alphabetic%20Transcription%20of%20Korean.pdf). Submitted by the Democratic People’s Republic of Korea. Tenth United Nations Conference on the Standardization of Geographical Names. New York, 31 July-9 August 2012. UNGEGN. Item 13(a) of the provisional agenda. Retrieved 2024-05-04.
 
 #### Revised Romanization of Korean
-- Wikipedia contributors. (2024, May 4). [Revised Romanization of Korean](https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean). In Wikipedia, The Free Encyclopedia. Retrieved 2024-05-04.
+- 문화관광부 (2000). 국어의 로마자 표기법 (문화관광부 고시 제2000-8호). Text and examples as published by the National Institute of Korean Language: [제1장](https://korean.go.kr/front/page/pageView.do?page_id=P000148&mn_id=99), [제2장](https://korean.go.kr/front/page/pageView.do?page_id=P000149&mn_id=99), [제3장](https://korean.go.kr/front/page/pageView.do?page_id=P000150&mn_id=99). Retrieved 2026-10-30. The pages give no revision date.
+- 국립국어원 (1988). 표준 발음법 (표준어 규정 제2부). The sound changes the converter applies; its article numbers are cited in `src/phonology.ts`.
+- Wikipedia contributors. [Revised Romanization of Korean](https://en.wikipedia.org/w/index.php?title=Revised_Romanization_of_Korean&oldid=1382445815). In Wikipedia, The Free Encyclopedia. Revision 1382445815 (2026-10-28). Retrieved 2026-10-30.
 
 #### Yale
 - Samuel E. Martin (1992). *A Reference Grammar of Korean*. Rutland, Vermont & Tokyo: Charles E. Tuttle. pp. 8–9. Cited through the Wikipedia article below; not consulted directly.

@@ -127,7 +127,7 @@ const TEST_CASES = [
   },
   {
     hangul: '압록강',
-    mc2000: 'amrokgang',
+    mc2000: 'amnokgang',
     dprk: 'Amrokgang',
     yale: 'aplok.kang',
   },
@@ -139,7 +139,7 @@ const TEST_CASES = [
   },
   {
     hangul: '한나산',
-    mc2000: 'hallasan',
+    mc2000: 'hannasan',
     dprk: 'Hallasan',
     yale: 'hannasan',
   },
@@ -151,7 +151,7 @@ const TEST_CASES = [
   },
   {
     hangul: '기대산',
-    mc2000: 'gitdaesan',
+    mc2000: 'gidaesan',
     dprk: 'Kittaesan',
     yale: 'kitaysan',
   },
@@ -161,7 +161,7 @@ const TEST_CASES = [
   // },
   {
     hangul: '뒤문',
-    mc2000: 'dwinmun',
+    mc2000: 'dwimun',
     dprk: 'Twinmun',
     yale: 'twimun',
   },
