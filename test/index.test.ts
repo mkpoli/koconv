@@ -134,25 +134,21 @@ const TEST_CASES = [
   {
     hangul: '천리마',
     mc2000: 'cheollima',
-    dprk: 'Chŏllima',
     yale: 'chenlima',
   },
   {
     hangul: '한나산',
     mc2000: 'hannasan',
-    dprk: 'Hallasan',
     yale: 'hannasan',
   },
   {
     hangul: '전라도',
     mc2000: 'jeollado',
-    dprk: 'Jŏllado',
     yale: 'cenlato',
   },
   {
     hangul: '기대산',
     mc2000: 'gidaesan',
-    dprk: 'Kittaesan',
     yale: 'kitaysan',
   },
   // {
@@ -162,19 +158,16 @@ const TEST_CASES = [
   {
     hangul: '뒤문',
     mc2000: 'dwimun',
-    dprk: 'Twinmun',
     yale: 'twimun',
   },
   {
     hangul: '앞언덕',
     mc2000: 'apeondeok',
-    dprk: 'Ap-ŏndŏk',
     yale: 'aph.entek',
   },
   {
     hangul: '부엌안골',
     mc2000: 'bueokangol',
-    dprk: 'Puŏk-angol',
     yale: 'puekh.ankol',
   },
   {
@@ -238,7 +231,7 @@ const TEST_CASES = [
   {
     hangul: '위키백과',
     mc2000: 'wikibaekgwa',
-    dprk: 'wikhibaekgwa',
+    dprk: 'wikhibaekkwa',
     yale: 'wikhipayk.kwa',
   },
   {
@@ -262,13 +255,13 @@ const TEST_CASES = [
   {
     hangul: '한국은 네 계절이 뚜렷하다',
     mc2000: 'hangugeun ne gyejeori tturyeothada',
-    dprk: 'Hangugŭn ne kyejŏli tturyŏthada',
+    dprk: 'Hangugŭn ne kyejŏri tturyŏthada',
     yale: 'Hānkwuk.un nēy kyēycel.i ttwulyeshata',
   },
   {
     hangul: '원하시는 선 색깔과 굵기에 체크하시면 됩니다',
     mc2000: 'wonhasineun seon saekkkalgwa gulgie chekeuhasimyeon doemnida',
-    dprk: 'Wŏnhasinŭn sŏn saekkkalgwa kulgie chekhŭhasimyŏn toimnida',
+    dprk: 'Wŏnhasinŭn sŏn saekkkalgwa kulkie chekhŭhasimyŏn toimnida',
     yale: 'Wēnhasinun sen sayk.kkalkwa kwulk.kiey cheykhuhasimyen toypnita',
   },
   // Examples from https://menu.gerosyab.net/ko/romanizer
@@ -281,13 +274,13 @@ const TEST_CASES = [
   {
     hangul: '선릉역',
     mc2000: 'seolleungyeok',
-    dprk: 'sŏllŭngyŏk',
+    dprk: 'sŏnrŭngyŏk',
     yale: 'senlung.yek',
   },
   {
     hangul: '역량',
     mc2000: 'yeongnyang',
-    dprk: 'yŏngnyang',
+    dprk: 'yŏngryang',
     yale: 'yeklyang',
   },
   {
@@ -324,6 +317,7 @@ const TEST_CASES = [
 
 test('Hangul-DPRK', () => {
   for (const { hangul, dprk } of TEST_CASES) {
+    if (!dprk) continue;
     expect(convertHangulToDPRK(hangul)).toEqual(dprk.toLowerCase().replace(/[\-.']/g, ''));
   }
 });

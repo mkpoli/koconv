@@ -53,8 +53,11 @@ The following systems are not planned to be supported, but is welcome to be cont
 
 #### DPRK
 
+The 1992 document is an image-only scan and the 2002 one has a damaged text layer, so their Hangul was read from the page images; only the 2012 document has a clean text layer.
+
+
 - *Working Paper No. 46*. [WRITING SYSTEMS AND GUIDES TO PRONUNCIATION: ROMANIZATION <u>Guideline on the Romanization of Korean</u>](https://unstats.un.org/Unsd/geoinfo/UNGEGN/docs/6th-uncsgn-docs/WP/6th_uncsgn_WP46.pdf).  Submitted by the Democratic People’s Republic of Korea. Sixth United Nations Conference on the Standardization of Geographical Names. New York, 25th August-3 September, 1992. Agenda Item 11 (a). UNGEGN. Retrieved 2024-05-04.
-- E/CONF.94/INF.78. [WRITING SYSTEMS: ROMANIZATION Guideline for The Romanization of Korean](https://unstats.un.org/unsd/geoinfo/UNGEGN/docs/8th-uncsgn-docs/inf/8th_UNCSGN_econf.94_INF.72.pdf). Submitted by the Democratic People’s Republic of Korea. Eighth United Nations Conference on the Standardization of Geographical Names. Berlin, 27 August-5 September 2002. UNGEGN. Item 16 (a) of the provisionalagenda. Retrieved 2024-05-04.
+- E/CONF.94/INF.72. [WRITING SYSTEMS: ROMANIZATION Guideline for The Romanization of Korean](https://unstats.un.org/unsd/geoinfo/UNGEGN/docs/8th-uncsgn-docs/inf/8th_UNCSGN_econf.94_INF.72.pdf). Submitted by the Democratic People’s Republic of Korea. Eighth United Nations Conference on the Standardization of Geographical Names. Berlin, 27 August-5 September 2002. UNGEGN. Item 16 (a) of the provisional agenda. Retrieved 2024-05-04.
 - E/CONF.101/CRP15 [**Writing systems and pronunciation:
 Romanization** The Rules of Latin Alphabetic Transcription of Korean Language](https://unstats.un.org/unsd/geoinfo/ungegn/docs/10th-uncsgn-docs/crp/E_Conf.101_CRP15_Rules%20of%20Latin%20Alphabetic%20Transcription%20of%20Korean.pdf). Submitted by the Democratic People’s Republic of Korea. Tenth United Nations Conference on the Standardization of Geographical Names. New York, 31 July-9 August 2012. UNGEGN. Item 13(a) of the provisional agenda. Retrieved 2024-05-04.
 

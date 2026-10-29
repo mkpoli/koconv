@@ -83,11 +83,21 @@ function survivor(
   }
 }
 
+/** Which standard pronunciation to follow. */
+export type Norm = 'south' | 'north';
+
 /** Applies the consonant assimilations between a pronounced final and the next onset. */
-function assimilate(coda: Coda, onset: Consonant): [Coda, Consonant, boolean] {
+function assimilate(coda: Coda, onset: Consonant, norm: Norm): [Coda, Consonant, boolean] {
   if (onset === 'ㄹ') {
-    if (coda === 'ㄴ') coda = 'ㄹ'; // 신라 [실라] (제20항)
-    else if (coda && coda !== 'ㄹ') onset = 'ㄴ'; // 종로 [종노], 독립 [독닙] (제19항)
+    // 신라 [실라] (제20항). The North writes ll only in established names (2012 §3.2): 은률 Ŭnryul.
+    if (coda === 'ㄴ') {
+      if (norm === 'south') coda = 'ㄹ';
+    }
+    // 종로 [종노], 독립 [독닙] (제19항). The North keeps the ㄹ: 압록강 Amrokgang.
+    else if (coda && coda !== 'ㄹ') {
+      if (norm === 'south') onset = 'ㄴ';
+      else coda = NASAL[coda];
+    }
   } else if (onset === 'ㄴ' && coda === 'ㄹ') {
     onset = 'ㄹ'; // 별내 [별래] (제20항)
   }
@@ -105,6 +115,7 @@ function join(
   nucleus: string,
   syllable: Syllable,
   following: Syllable,
+  norm: Norm,
 ): [Coda, Consonant, boolean] {
   const [first, second] = letters;
   if (!first) return ['', onset, false];
@@ -130,8 +141,8 @@ function join(
     const rest: Coda = second ? NEUTRAL[first]! : '';
     if (ASPIRATED[onset] && onset !== 'ㅂ') return [rest, ASPIRATED[onset]!, false]; // 좋고 [조ː코]
     if (onset === 'ㅅ') return [rest, 'ㅅ', true]; // 닿소 [다ː쏘]
-    if (onset === 'ㄴ') return assimilate(rest || 'ㄴ', 'ㄴ'); // 놓는 [논는], 뚫는 [뚤른]
-    return assimilate(rest || 'ㄷ', onset);
+    if (onset === 'ㄴ') return assimilate(rest || 'ㄴ', 'ㄴ', norm); // 놓는 [논는], 뚫는 [뚤른]
+    return assimilate(rest || 'ㄷ', onset, norm);
   }
 
   // ㄱ, ㄷ, ㅂ, ㅈ before ㅎ (제12항 1, 붙임 1).
@@ -146,7 +157,7 @@ function join(
   }
 
   const kept = survivor(letters, onset, syllable, following);
-  const result = assimilate(NEUTRAL[kept]!, onset);
+  const result = assimilate(NEUTRAL[kept]!, onset, norm);
   // A two-letter final also tenses what follows: 앉고 [안꼬], 넓다 [널따] (제24항, 제25항).
   if (second && TENSABLE.has(result[1])) result[2] = true;
   return result;
@@ -156,9 +167,11 @@ function join(
  * Pronounces a word written in Hangul following the Standard Pronunciation
  * of Korean (표준 발음법, 1988), as far as spelling alone allows: sound
  * changes that depend on meaning, such as ㄴ insertion (학여울 [항녀울]) or
- * tensing within compounds (물방울 [물빵울]), are not applied.
+ * tensing within compounds (물방울 [물빵울]), are not applied. With
+ * `norm: 'north'`, ㄹ after another consonant stays ㄹ and ㄴ before ㄹ
+ * stays ㄴ, as in the DPRK's romanization.
  */
-export function pronounce(syllables: Syllable[]): Sound[] {
+export function pronounce(syllables: Syllable[], norm: Norm = 'south'): Sound[] {
   const sounds: Sound[] = syllables.map(([onset, nucleus]) => ({
     onset: ONSET[onset]!,
     tense: false,
@@ -171,7 +184,14 @@ export function pronounce(syllables: Syllable[]): Sound[] {
     const sound = sounds[i]!;
     const next = sounds[i + 1];
     if (next) {
-      [sound.coda, next.onset, next.tense] = join(letters, next.onset, next.nucleus, syllable, syllables[i + 1]!);
+      [sound.coda, next.onset, next.tense] = join(
+        letters,
+        next.onset,
+        next.nucleus,
+        syllable,
+        syllables[i + 1]!,
+        norm,
+      );
     } else if (letters.length) {
       sound.coda = NEUTRAL[survivor(letters, '', syllable)]!;
     }
