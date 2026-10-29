@@ -18,10 +18,10 @@ For now only from Hangul to the following systems are supported.
 - The Romanization of Korean (DPRK, 1992 - 2002 - 2012)
 - Revised Romanization of Korean (Ministry of Culture, 2000)
 - McCune–Reischauer (1939)
+- Kontsevich Cyrillization (Система Концевича)
 
 ### Planned
 - Pronounciation Respelling (한글 발음 표기법)
-- Kontsevich Cyrillization (Система Концевича)
 - Braille
 
 The reverse conversion is planned to be implemented as well.
@@ -65,6 +65,11 @@ Romanization** The Rules of Latin Alphabetic Transcription of Korean Language](h
 - George M. McCune and Edwin O. Reischauer (1939). The Romanization of the Korean Language, Based upon Its Phonetic Structure. *Transactions of the Korea Branch of the Royal Asiatic Society* 29: 1–55. Scan linked from [RAS Korea's full texts](https://raskb.com/full-texts-by-volume-2/). Rules taken through the two sources below; the paper itself was not read.
 - Wikipedia contributors. [McCune–Reischauer](https://en.wikipedia.org/w/index.php?title=McCune%E2%80%93Reischauer&oldid=1373018240). In Wikipedia, The Free Encyclopedia. Revision 1373018240 (2026-09-03). Retrieved 2026-10-30. Letter tables, the assimilation table and the examples for the original system.
 - Library of Congress (2009, updated July 2025). [Korean Romanization Table](https://www.loc.gov/catdir/cpso/romanization/korean.pdf). ALA-LC, based on MR. Retrieved 2026-10-30. Examples used only where they agree with the original system.
+
+#### Kontsevich
+- Wikipedia contributors. [Система Концевича](https://ru.wikipedia.org/w/index.php?oldid=154552527). In Wikipedia, The Free Encyclopedia (Russian). Revision 154552527 (2026-08-19). Retrieved 2026-10-30. Letter and junction tables, positional rules and examples. Where it and the English article disagree, the converter follows this table, except ㄲ before a vowel (кк, as in the example 밖에 пакке) and ㄱ+ㅌ (ктх; the cell кх would read as ㅋ). Final ㅇ takes ъ before и, as in the examples (용인 Йонъин); before е, ё, ю, я this is inferred.
+- Wikipedia contributors. [Cyrillization of Korean](https://en.wikipedia.org/w/index.php?title=Cyrillization_of_Korean&oldid=1359438695). In Wikipedia, The Free Encyclopedia. Revision 1359438695 (2026-06-15). Retrieved 2026-10-30. Example words and sentences.
+- Kontsevich's own description was not consulted.
 
 #### Revised Romanization of Korean
 - 문화관광부 (2000). 국어의 로마자 표기법 (문화관광부 고시 제2000-8호). Text and examples as published by the National Institute of Korean Language: [제1장](https://korean.go.kr/front/page/pageView.do?page_id=P000148&mn_id=99), [제2장](https://korean.go.kr/front/page/pageView.do?page_id=P000149&mn_id=99), [제3장](https://korean.go.kr/front/page/pageView.do?page_id=P000150&mn_id=99). Retrieved 2026-10-30. The pages give no revision date.
