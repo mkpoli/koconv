@@ -1,4 +1,4 @@
-import { separateSyllable } from '../syllable';
+import { convertWords, type Syllable } from '../hangul';
 
 const onsetMapping: Record<string, string> = {
   ᄀ: 'k',
@@ -150,7 +150,7 @@ const HangulSoundRules = new Map<string, string>([
  * @param hangulParts An array of tuples where each tuple represents the onset, nucleus, and coda of a Hangul syllable.
  * @returns A string with the Romanized version of the Hangul input.
  */
-function romanizeHangul(hangulParts: [string, string, string][]): string {
+function romanizeHangul(hangulParts: Syllable[]): string {
   return hangulParts
     .map(([onset, nucleus, coda], index) => {
       let romanOnset = onsetMapping[onset];
@@ -171,7 +171,7 @@ function romanizeHangul(hangulParts: [string, string, string][]): string {
         // Remove the initial if sound rule matched (because it already includes the onset)
         const previousCoda = hangulParts[index - 1][2];
         const ruleKey = previousCoda + onset;
-        const soundRuleResult = HangulSoundRules.get(ruleKey as any);
+        const soundRuleResult = HangulSoundRules.get(ruleKey);
         if (soundRuleResult) {
           romanOnset = '';
         }
@@ -182,7 +182,7 @@ function romanizeHangul(hangulParts: [string, string, string][]): string {
         const nextOnset = hangulParts[index + 1][0];
         const ruleKey = coda + nextOnset;
         // console.log(`Checking rule: ${ruleKey}`);
-        const soundRuleResult = HangulSoundRules.get(ruleKey as any);
+        const soundRuleResult = HangulSoundRules.get(ruleKey);
         if (soundRuleResult) {
           // console.log(`Rule matched: ${ruleKey} => ${soundRuleResult}`);
           romanCoda = soundRuleResult;
@@ -206,7 +206,7 @@ function romanizeHangul(hangulParts: [string, string, string][]): string {
  * @param hangul A string containing Hangul characters.
  */
 export function convertHangulToDPRK(hangul: string): string {
-  return (
+  return convertWords(
     hangul
       // Preprocessing for special cases of preservative spelling of north korean
       //   1. -nr- -> -ll-
@@ -214,22 +214,7 @@ export function convertHangulToDPRK(hangul: string): string {
       //   2. Tensification: -b- -> -pp-, -d- -> -tt-, -g- -> -kk-,
       .replace('기대산', '깃대산')
       .replace('새별읍', '샛별읍')
-      .replace('뒤문', '뒷문')
-      .split(/(\p{sc=Hangul}+)/u)
-      .map((word) => {
-        if (word.match(/\p{sc=Hangul}/u)) {
-          const chars = [...word];
-          try {
-            return romanizeHangul(chars.map((char) => separateSyllable(char)));
-          } catch (error) {
-            console.error(error);
-            return word;
-          }
-        } else {
-          return word;
-        }
-      })
-      .filter(Boolean)
-      .join('')
+      .replace('뒤문', '뒷문'),
+    romanizeHangul,
   );
 }
