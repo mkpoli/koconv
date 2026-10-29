@@ -33,7 +33,8 @@
     "check": "tsrs",
     "test": "bun test",
     "lint:package": "publint --strict",
-    "prepublishOnly": "bun run check && bun test && bun run build && bun run lint:package"
+    "prepublishOnly": "bun run check && bun test && bun run build && bun run lint:package",
+    "bench": "bun bench/convert.ts"
   },
   "engines": {
     "node": ">=20.19"
