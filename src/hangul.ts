@@ -35,6 +35,9 @@ function decomposeWord(word: string): Syllable[] {
  * Converts every run of precomposed Hangul syllables in `text` with
  * `convertWord` and leaves everything else, including bare jamo, untouched.
  */
-export function convertWords(text: string, convertWord: (syllables: Syllable[]) => string): string {
-  return text.replace(/[가-힣]+/g, (word) => convertWord(decomposeWord(word)));
+export function convertWords(
+  text: string,
+  convertWord: (syllables: Syllable[], word: string) => string,
+): string {
+  return text.replace(/[가-힣]+/g, (word) => convertWord(decomposeWord(word), word));
 }
