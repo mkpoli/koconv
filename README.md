@@ -118,4 +118,5 @@ bun run build   # writes dist/
 ### Releasing
 
 1. Bump `version` in `package.json` on `main`.
-2. Push a tag `v<version>`. The `Release` workflow checks that the tag matches `package.json`, publishes to npm with provenance through npm trusted publishing, and creates a GitHub release.
+2. Push a tag `v<version>`. The `Release` workflow checks that the tag matches `package.json`, stages the package on npm with provenance through npm trusted publishing, and creates a GitHub release.
+3. Approve the staged version with 2FA: `npm stage list koconv`, then `npm stage approve <stage-id>`. It becomes public only then.
