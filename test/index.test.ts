@@ -105,13 +105,13 @@ const TEST_CASES = [
     hangul: '붉은바위', // 붉은 바위
     mc2000: 'bulgeunbawi',
     dprk: 'Pulgŭnbawi',
-    yale: 'pulkunpawi',
+    yale: 'pulk.unpawi',
   },
   {
     hangul: '앉은바위', // 앉은 바위
     mc2000: 'anjeunbawi',
     dprk: 'Anjŭnbawi',
-    yale: 'ancunpawi',
+    yale: 'anc.unpawi',
   },
   {
     hangul: '백마산',
@@ -129,7 +129,7 @@ const TEST_CASES = [
     hangul: '압록강',
     mc2000: 'amrokgang',
     dprk: 'Amrokgang',
-    yale: 'aplokkang',
+    yale: 'aplok.kang',
   },
   {
     hangul: '천리마',
@@ -153,7 +153,7 @@ const TEST_CASES = [
     hangul: '기대산',
     mc2000: 'gitdaesan',
     dprk: 'Kittaesan',
-    yale: 'kistaysan', // kiqtaysan
+    yale: 'kitaysan',
   },
   // {
   //   hangul: '새별읍',
@@ -163,19 +163,19 @@ const TEST_CASES = [
     hangul: '뒤문',
     mc2000: 'dwinmun',
     dprk: 'Twinmun',
-    yale: 'twismun',
+    yale: 'twimun',
   },
   {
     hangul: '앞언덕',
     mc2000: 'apeondeok',
     dprk: 'Ap-ŏndŏk',
-    yale: 'aphentek',
+    yale: 'aph.entek',
   },
   {
     hangul: '부엌안골',
     mc2000: 'bueokangol',
     dprk: 'Puŏk-angol',
-    yale: 'puekhankol',
+    yale: 'puekh.ankol',
   },
   {
     hangul: '판교',
@@ -187,14 +187,14 @@ const TEST_CASES = [
     hangul: '방어동',
     mc2000: 'bangeodong',
     dprk: 'Pang-ŏ-dong',
-    yale: 'pangetong',
+    yale: 'pang.etong',
   },
   {
     hangul: '평안남도 평성시',
     mc2000: 'pyeongannamdo pyeongseongsi',
     // dprk: 'Phyŏngannam-do Phyŏngsong-si', // Probable typo in the report: o should be ŏ
     dprk: 'Phyŏngannam-do Phyŏngsŏng-si',
-    yale: 'phyengannamto phyengsengsi',
+    yale: 'phyeng.annamto phyengsengsi',
   },
   // {
   //   hangul: '평양',
@@ -263,7 +263,7 @@ const TEST_CASES = [
     hangul: '한국은 네 계절이 뚜렷하다',
     mc2000: 'hangugeun ne gyejeori tturyeothada',
     dprk: 'Hangugŭn ne kyejŏli tturyŏthada',
-    yale: 'Hānkwukun nēy kyēyceli ttwulyeshata',
+    yale: 'Hānkwuk.un nēy kyēycel.i ttwulyeshata',
   },
   {
     hangul: '원하시는 선 색깔과 굵기에 체크하시면 됩니다',
@@ -276,13 +276,13 @@ const TEST_CASES = [
     hangul: '해돋이',
     mc2000: 'haedoji',
     dprk: 'haedoji',
-    yale: 'haytoti',
+    yale: 'haytot.i',
   },
   {
     hangul: '선릉역',
     mc2000: 'seolleungyeok',
     dprk: 'sŏllŭngyŏk',
-    yale: 'senlungyek',
+    yale: 'senlung.yek',
   },
   {
     hangul: '역량',
@@ -294,7 +294,7 @@ const TEST_CASES = [
     hangul: '굳이',
     mc2000: 'guji',
     dprk: 'kuji',
-    yale: 'kwuti',
+    yale: 'kwut.i',
   },
   {
     hangul: '물티슈',
@@ -345,9 +345,9 @@ test('Hangul-Yale', () => {
     expect(convertHangulToYale(hangul)).toEqual(
       yale
         .toLowerCase()
-        .replace(/[\-.]/g, '')
-        .normalize('NFD') // Remove macrons from vowels.
-        .replace(/[\u0304]/g, '')
+        .normalize('NFD') // Vowel length (macrons) needs a lexicon.
+        .replace(/\u0304/g, '')
+        .normalize('NFC'),
     );
   }
 });
