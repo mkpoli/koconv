@@ -17,9 +17,9 @@ For now only from Hangul to the following systems are supported.
 - Yale Romanization of Korean (1942)
 - The Romanization of Korean (DPRK, 1992 - 2002 - 2012)
 - Revised Romanization of Korean (Ministry of Culture, 2000)
+- McCune–Reischauer (1939)
 
 ### Planned
-- McCune–Reischauer (1939)
 - Pronounciation Respelling (한글 발음 표기법)
 - Kontsevich Cyrillization (Система Концевича)
 - Braille
@@ -60,6 +60,11 @@ The 1992 document is an image-only scan and the 2002 one has a damaged text laye
 - E/CONF.94/INF.72. [WRITING SYSTEMS: ROMANIZATION Guideline for The Romanization of Korean](https://unstats.un.org/unsd/geoinfo/UNGEGN/docs/8th-uncsgn-docs/inf/8th_UNCSGN_econf.94_INF.72.pdf). Submitted by the Democratic People’s Republic of Korea. Eighth United Nations Conference on the Standardization of Geographical Names. Berlin, 27 August-5 September 2002. UNGEGN. Item 16 (a) of the provisional agenda. Retrieved 2024-05-04.
 - E/CONF.101/CRP15 [**Writing systems and pronunciation:
 Romanization** The Rules of Latin Alphabetic Transcription of Korean Language](https://unstats.un.org/unsd/geoinfo/ungegn/docs/10th-uncsgn-docs/crp/E_Conf.101_CRP15_Rules%20of%20Latin%20Alphabetic%20Transcription%20of%20Korean.pdf). Submitted by the Democratic People’s Republic of Korea. Tenth United Nations Conference on the Standardization of Geographical Names. New York, 31 July-9 August 2012. UNGEGN. Item 13(a) of the provisional agenda. Retrieved 2024-05-04.
+
+#### McCune–Reischauer
+- George M. McCune and Edwin O. Reischauer (1939). The Romanization of the Korean Language, Based upon Its Phonetic Structure. *Transactions of the Korea Branch of the Royal Asiatic Society* 29: 1–55. Scan linked from [RAS Korea's full texts](https://raskb.com/full-texts-by-volume-2/). Rules taken through the two sources below; the paper itself was not read.
+- Wikipedia contributors. [McCune–Reischauer](https://en.wikipedia.org/w/index.php?title=McCune%E2%80%93Reischauer&oldid=1373018240). In Wikipedia, The Free Encyclopedia. Revision 1373018240 (2026-09-03). Retrieved 2026-10-30. Letter tables, the assimilation table and the examples for the original system.
+- Library of Congress (2009, updated July 2025). [Korean Romanization Table](https://www.loc.gov/catdir/cpso/romanization/korean.pdf). ALA-LC, based on MR. Retrieved 2026-10-30. Examples used only where they agree with the original system.
 
 #### Revised Romanization of Korean
 - 문화관광부 (2000). 국어의 로마자 표기법 (문화관광부 고시 제2000-8호). Text and examples as published by the National Institute of Korean Language: [제1장](https://korean.go.kr/front/page/pageView.do?page_id=P000148&mn_id=99), [제2장](https://korean.go.kr/front/page/pageView.do?page_id=P000149&mn_id=99), [제3장](https://korean.go.kr/front/page/pageView.do?page_id=P000150&mn_id=99). Retrieved 2026-10-30. The pages give no revision date.
